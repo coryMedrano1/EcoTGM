@@ -3,10 +3,12 @@ using System.Collections;
 
 public class enemyAIScript : MonoBehaviour {
 
+	public float enemyHP = 100f; 
 	public Transform target;
 	public float enemySpeed = 3f;
 	public float stopDistance;
 	Transform enemyTransform;
+	public bool isActive = false; 
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +20,7 @@ public class enemyAIScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Vector3.Distance(target.position, enemyTransform.position) > stopDistance)
+		if (isActive == true && Vector3.Distance(target.position, enemyTransform.position) > stopDistance)
 		{
 			//get direction from target
 			Vector3 direction = target.position - enemyTransform.position;
@@ -28,7 +30,26 @@ public class enemyAIScript : MonoBehaviour {
 			enemyTransform.position += direction * enemySpeed * Time.deltaTime;
 
 		}
-	
+
+		if(enemyHP <= 0)
+		{
+			Debug.Log("hit");
+			Destroy(gameObject);
+			
+		}
+		
+	}
+
+	void OnTriggerEnter2D(Collider2D otherObject)
+	{
+
+		if(otherObject.gameObject.tag == "Player")
+		{
+
+			isActive = true;
+
+		}
+
 	}
 
 }

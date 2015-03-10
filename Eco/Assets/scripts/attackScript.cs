@@ -3,15 +3,22 @@ using System.Collections;
 
 public class attackScript : MonoBehaviour {
 
+	public float playerAttackPower = 25f;
+
 	Animator attacks;
 	bool isAttacking = false;
 
 	private characterControllerScript characterScript;
 	public GameObject character;
 
+	private enemyAIScript enemyScript;
+	public GameObject enemy;
+
 	void Awake()
 	{
 		characterScript = character.GetComponent<characterControllerScript>();
+
+		enemyScript = enemy.GetComponent<enemyAIScript>();
 
 	}
 
@@ -53,7 +60,7 @@ public class attackScript : MonoBehaviour {
 		if(otherObject.gameObject.tag == "enemy")
 		{
 
-			Destroy(otherObject.gameObject);
+			enemyScript.enemyHP = enemyScript.enemyHP - playerAttackPower;
 			
 		}
 		
