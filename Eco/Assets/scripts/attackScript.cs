@@ -13,12 +13,16 @@ public class attackScript : MonoBehaviour {
 
 	private enemyAIScript enemyScript;
 	public GameObject enemy;
+	
+	public AudioClip swordSoundEffect;
 
 	void Awake()
 	{
 		characterScript = character.GetComponent<characterControllerScript>();
 
 		enemyScript = enemy.GetComponent<enemyAIScript>();
+
+
 
 	}
 
@@ -43,6 +47,8 @@ public class attackScript : MonoBehaviour {
 			attacks.SetBool("attack", true);
 
 			collider2D.enabled = true;
+
+			audio.PlayOneShot(swordSoundEffect);
 
 		}
 

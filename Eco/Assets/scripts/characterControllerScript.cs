@@ -52,6 +52,7 @@ public class characterControllerScript : MonoBehaviour
 		{
 
 				if (grounded && Input.GetKeyDown (KeyCode.Space)) {
+
 						//sets grounded to false
 						anim.SetBool ("ground", false);
 						//adding a force to jump

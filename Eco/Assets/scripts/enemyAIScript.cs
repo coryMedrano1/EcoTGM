@@ -24,7 +24,7 @@ public class enemyAIScript : MonoBehaviour {
 		{
 			//get direction from target
 			Vector3 direction = target.position - enemyTransform.position;
-			//normalize the direction
+			//give direction a magnetude
 			direction.Normalize();
 			//move in direction of target
 			enemyTransform.position += direction * enemySpeed * Time.deltaTime;
@@ -33,7 +33,6 @@ public class enemyAIScript : MonoBehaviour {
 
 		if(enemyHP <= 0)
 		{
-			Debug.Log("hit");
 			Destroy(gameObject);
 			
 		}
