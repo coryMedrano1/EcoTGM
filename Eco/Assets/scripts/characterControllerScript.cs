@@ -32,7 +32,7 @@ public class characterControllerScript : MonoBehaviour
 				//gives vertical speed in animator
 				anim.SetFloat ("verticalSpeed", rigidbody2D.velocity.y);
 
-				//gets the axis that the player will move along
+				//gets the input that the player will have to press to move
 				float move = Input.GetAxis ("Horizontal");
 				//sets speed for movement in animator
 				anim.SetFloat ("speed", Mathf.Abs (move));
